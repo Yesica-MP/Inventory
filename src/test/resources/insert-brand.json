@@ -1,0 +1,57 @@
+{
+  "brandName": "Jose Cuervo",
+  "brandDescription": "Tequila silver 750 ml",
+  "brandPrice": "23.50"
+}
+{
+  "brandName": "Jack Daniels",
+  "brandDescription": "Apple flavored whiskey 750 ml",
+  "brandPrice": "27.25"
+}
+{
+  "brandName": "Bacardi",
+  "brandDescription": "Gold rum 375ml",
+  "brandPrice": "9.75"
+}
+{
+  "brandName": "Smirnoff",
+  "brandDescription": "80 proof vodka, 50ml",
+  "brandPrice": "3.85"
+}
+{
+  "brandName": "Hennessy",
+  "brandDescription": "Special cognac 750 ml",
+  "brandPrice": "58"
+}
+{
+  "brandName": "Stella Rosa",
+  "brandDescription": "Red wine 750 ml",
+  "brandPrice": "18.99"
+}
+
+
+{
+  "brandName": "Patron",
+  "brandDescription": "Tequila silver 750 ml",
+  "brandPrice": "53.50"
+}
+{
+  "brandName": "Crown Royal",
+  "brandDescription": "Peach flavored whiskey 750 ml",
+  "brandPrice": "31.25"
+}
+{
+  "brandName": "Captain Morgan",
+  "brandDescription": "Madagascar Vanilla rum 375ml",
+  "brandPrice": "11.15"
+}
+{
+  "brandName": "Absolut",
+  "brandDescription": "Wild berry vodka, 750ml",
+  "brandPrice": "33.85"
+}
+{
+  "brandName": "Josh",
+  "brandDescription": "Merlot 750 ml",
+  "brandPrice": "17.49"
+}
