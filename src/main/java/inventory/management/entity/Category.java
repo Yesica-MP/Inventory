@@ -44,7 +44,7 @@ public class Category {
 	
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
-	@ManyToMany(mappedBy = "categories",cascade = CascadeType.PERSIST)
+	@ManyToMany(mappedBy = "categories",cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	private Set<Supplier> suppliers = new HashSet<>();
 
 }

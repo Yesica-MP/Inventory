@@ -49,7 +49,7 @@ public class Supplier {
 	@OneToMany(mappedBy = "supplier", cascade = CascadeType.ALL)
 	private Set<Brand> brands = new HashSet<>();
 	
-	@ManyToMany(cascade = CascadeType.PERSIST)
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinTable(name = "supplier_category", joinColumns = @JoinColumn(name = "supplier_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude

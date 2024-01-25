@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -37,6 +36,13 @@ public class InventoryManagementController {
 		log.info("Creating supplier with ID= {}", supplierData);
 		return inventoryService.saveSupplier(supplierData);
 	}
+	
+	// Endpoint to retrieve all suppliers
+		@GetMapping("/supplier")
+		public List<SupplierData> retrieveAllSuppliers(){
+			log.info("Retrieve all suppliers");
+			return inventoryService.retrieveSuppliers();
+		}
 	
 	// Endpoint to insert a new brand for a specific supplier and category
 	@PostMapping("/supplier/{supplierId}/category/{categoryId}/brand")
@@ -82,12 +88,6 @@ public class InventoryManagementController {
 		return Map.of("message", "Deletion of brand with ID= " + brandId + " was successful.");
 	}
 	
-	// Endpoint to retrieve all suppliers
-	@GetMapping("/supplier")
-	public List<SupplierData> retrieveAllSuppliers(){
-		log.info("Retrieve all suppliers");
-		return inventoryService.retrieveSuppliers();
-	}
 	
 	// Endpoint to retrieve a supplier by ID
 	@GetMapping("/supplier/{supplierId}")
@@ -97,13 +97,20 @@ public class InventoryManagementController {
 		
 	}
 	
-	// Endpoint to insert a new category for a specific supplier
-	@PostMapping("/supplier/{supplierId}/category")
+	// Endpoint to associate a category with a supplier
+	@PostMapping("/category/supplier")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public CategoryResponse insertCategory(@PathVariable Long supplierId, @RequestParam(required = false) Long categoryId, @RequestBody CategoryResponse categoryResponse) {
-		log.info("Creating category {} in supplier with ID= {}", categoryResponse, supplierId);
-		return inventoryService.saveCategory(supplierId, categoryId, categoryResponse);
+	public CategoryResponse insertCategory(@RequestBody CategoryResponse categoryResponse) {
+		log.info("Associating suppliers with existing category {}",  categoryResponse.getCategoryId());
+		return inventoryService.associateSuppliersWithCategory(categoryResponse);
 		
+	}
+	
+	//Endpoint to retrieve all categories
+	@GetMapping("/category")
+	public List<CategoryResponse> retrieveAllCategories(){
+		log.info("Retrieving all categories");
+		return inventoryService.retrieveCategories();
 	}
 	
 	// Endpoint to delete a supplier by ID

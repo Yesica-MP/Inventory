@@ -68,12 +68,13 @@ public class SupplierData {
 	public static class CategoryResponse {
 		private Long categoryId;
 		private String categoryName;
-		
+		private Long supplierId;
 		
 		public CategoryResponse(Category category) {
 			categoryId = category.getCategoryId();
 			categoryName = category.getCategoryName();
+	        supplierId = category.getSuppliers().isEmpty() ? null : category.getSuppliers().iterator().next().getSupplierId();
+	
 		}
 	}
-
 }

@@ -1,4 +1,34 @@
 {
+  "brandName": "Corona Extra",
+  "brandDescription": "6pk bottles",
+  "brandPrice": "11.25"
+}
+{
+  "brandName": "Dos XX",
+  "brandDescription": "Dos XX Lager 18pk can",
+  "brandPrice": "23.50"
+}
+{
+  "brandName": "Sierra Nevada",
+  "brandDescription": "IPA 6k",
+  "brandPrice": "10.75"
+}
+{
+  "brandName": "Budweiser",
+  "brandDescription": "8pk 16oz cans",
+  "brandPrice": "13.25"
+}
+{
+  "brandName": "Bud Light",
+  "brandDescription": "Bud Light 30pk",
+  "brandPrice": "29.99"
+}
+{
+  "brandName": "Michelob Ultra",
+  "brandDescription": "Ultra lime 6pk",
+  "brandPrice": "10.79"
+}
+{
   "brandName": "Jose Cuervo",
   "brandDescription": "Tequila silver 750 ml",
   "brandPrice": "23.50"
@@ -28,8 +58,6 @@
   "brandDescription": "Red wine 750 ml",
   "brandPrice": "18.99"
 }
-
-
 {
   "brandName": "Patron",
   "brandDescription": "Tequila silver 750 ml",
@@ -55,3 +83,34 @@
   "brandDescription": "Merlot 750 ml",
   "brandPrice": "17.49"
 }
+{
+  "brandName": "Marlboro",
+  "brandDescription": "Marlboro Gold",
+  "brandPrice": "12.25"
+}
+{
+  "brandName": "Camel",
+  "brandDescription": "Camel Crush",
+  "brandPrice": "12.50"
+}
+{
+  "brandName": "Benson & Hedges",
+  "brandDescription": "Menthol",
+  "brandPrice": "10.50"
+}
+{
+  "brandName": "Coca Cola",
+  "brandDescription": "Coca cola 16oz",
+  "brandPrice": "2.25"
+}
+{
+  "brandName": "Pepsi",
+  "brandDescription": "Pepsi 6pk",
+  "brandPrice": "8.85"
+}
+{
+  "brandName": "Arizona",
+  "brandDescription": "Raspberry tea 24Oz",
+  "brandPrice": "3.00"
+}
+

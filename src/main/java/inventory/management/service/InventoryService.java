@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
 import inventory.management.controller.model.SupplierData;
 import inventory.management.controller.model.SupplierData.BrandResponse;
 import inventory.management.controller.model.SupplierData.CategoryResponse;
@@ -55,10 +54,8 @@ public class InventoryService {
 		brand.setBrandDescription(brandResponse.getBrandDescription());
 		brand.setBrandPrice(brandResponse.getBrandPrice());
 		
-	
-		
 	}
-
+	
 	private Brand findOrCreateBrand(Long supplierId, Long brandId) {
 		Brand brand;
 		
@@ -89,7 +86,6 @@ public class InventoryService {
 		return response;
 	}
 
-	
 	@Transactional(readOnly = false)
 	public SupplierData saveSupplier(SupplierData supplierData) {
 		
@@ -123,23 +119,43 @@ public class InventoryService {
 		supplier.setSupplierAddress(supplierData.getSupplierAddress());
 	}
 	@Transactional(readOnly = false)
-	public CategoryResponse saveCategory(Long supplierId, Long categoryId, CategoryResponse categoryResponse) {
+	public CategoryResponse saveCategory(CategoryResponse categoryResponse) {
+		Long supplierId = categoryResponse.getSupplierId();
 		Supplier supplier = findSupplierById(supplierId);
-		Category category = findOrCreateCategory(categoryId);
+		        
+		// Create or retrieve the category
+	    Category category = findOrCreateCategory(categoryResponse.getCategoryId());
+
+	    // Set category details
+	    copyCategoryFields(category, categoryResponse);
+
+	    // Associate category with suppliers
+	    category.getSuppliers().clear();  // Clear existing suppliers
+	    category.getSuppliers().add(supplier);
+
+	    
+	    // Update categories in suppliers
+	    supplier.getCategories().add(category);
+
+	    // Save the category
+	    Category savedCategory = categoryDao.save(category);
+
+	    return new CategoryResponse(savedCategory);
+
 		
-		copyCategoryFields(category, categoryResponse);
-		category.getSuppliers().add(supplier);
-		supplier.getCategories().add(category);
-		return new CategoryResponse(categoryDao.save(category));
-	}
+		}
 
 	private void copyCategoryFields(Category category, CategoryResponse categoryData) {
 		category.setCategoryId(categoryData.getCategoryId());
 		category.setCategoryName(categoryData.getCategoryName());
+		category.getSuppliers().clear(); // Assuming you want to associate only one supplier
+	    Supplier supplier = findSupplierById(categoryData.getSupplierId());
+	    category.getSuppliers().add(supplier);
 		
 	}
 
 	private Category findOrCreateCategory(Long categoryId) {
+		
 		/*Category category;
 		
 		if(Objects.isNull(categoryId)) {
@@ -155,6 +171,7 @@ public class InventoryService {
 		}else {
 			return new Category();
 		}
+		
 	}
 
 	private Category findCategoryById(Long categoryId) {
@@ -191,5 +208,41 @@ public class InventoryService {
 		supplierDao.delete(supplier);
 		
 	}
+	@Transactional
+	public CategoryResponse associateSuppliersWithCategory(CategoryResponse categoryResponse) {
+		Long supplierId = categoryResponse.getSupplierId();
+		Long categoryId = categoryResponse.getCategoryId();
+		 
+	    Category category = findCategoryById(categoryId);
 
+	    // Ensure the category exists
+	    if (category == null) {
+	    	throw new NoSuchElementException("Category with ID " + categoryId + " was not found.");
+	    }
+	    // Associate category with supplier
+	    Supplier supplier = findSupplierById(supplierId); 
+	    category.getSuppliers().add(supplier);
+
+	    // Save the category
+	    Category savedCategory = categoryDao.save(category);
+	    
+	    // Update categories in the associated supplier
+	    supplier.getCategories().add(savedCategory);
+	    supplierDao.save(supplier);
+
+	    return new CategoryResponse(savedCategory);
+		
+	}
+	@Transactional(readOnly = true)
+	public List<CategoryResponse> retrieveCategories() {
+		
+		List <Category> categories = categoryDao.findAll();
+		List<CategoryResponse> response = new LinkedList<>();
+		
+		for(Category category : categories) {
+			CategoryResponse cd = new CategoryResponse(category);
+			response.add(cd);
+		}
+		return response;
+	}
 }

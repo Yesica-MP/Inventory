@@ -1,8 +1,6 @@
 package inventory.management.controller.model;
 
 import inventory.management.entity.Brand;
-import inventory.management.entity.Category;
-import inventory.management.entity.Supplier;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

@@ -7,5 +7,5 @@ import inventory.management.entity.Category;
  * Spring Data JPA repository for managing Category entities.
  */
 public interface CategoryDao extends JpaRepository<Category, Long> {
-
+		
 }

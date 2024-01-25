@@ -51,7 +51,4 @@ public class Brand {
 	@JoinColumn(name = "category_id", nullable = true)
 	private Category category;
 
-
-
-
 }
