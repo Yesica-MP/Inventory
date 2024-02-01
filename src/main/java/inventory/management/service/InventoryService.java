@@ -4,8 +4,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Objects;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -38,7 +38,7 @@ public class InventoryService {
 		Supplier supplier = findSupplierById(supplierId);
 		Category category = findCategoryById(categoryId);
 		Long brandId = brandResponse.getBrandId();
-		Brand brand = findOrCreateBrand(supplierId, brandId);
+		Brand brand = findOrCreateBrand(supplierId, brandId, brandResponse.getBrandName());
 		
 		setFieldsInBrand(brand, brandResponse);
 		brand.setSupplier(supplier);
@@ -56,10 +56,16 @@ public class InventoryService {
 		
 	}
 	
-	private Brand findOrCreateBrand(Long supplierId, Long brandId) {
+	private Brand findOrCreateBrand(Long supplierId, Long brandId, String brandName) {
 		Brand brand;
 		
 		if(Objects.isNull(brandId)) {
+			List <Brand> brands = brandDao.findByBrandName(brandName);
+			
+			if(!brands.isEmpty()) {
+				throw new DuplicateKeyException("Brand " + brandName + " already exists.");
+			}
+				
 			brand = new Brand();
 		}
 		else {
@@ -100,6 +106,7 @@ public class InventoryService {
 		Supplier supplier;
 		
 		if(Objects.isNull(supplierId)) {
+			
 			supplier = new Supplier();
 		}
 		else {

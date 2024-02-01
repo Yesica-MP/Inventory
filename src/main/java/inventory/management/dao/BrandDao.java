@@ -1,5 +1,7 @@
 package inventory.management.dao;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import inventory.management.entity.Brand;
@@ -9,5 +11,7 @@ import inventory.management.entity.Brand;
  */
 
 public interface BrandDao extends JpaRepository<Brand, Long> {
+
+	List<Brand> findByBrandName(String brandName);
 
 }
