@@ -163,16 +163,7 @@ public class InventoryService {
 
 	private Category findOrCreateCategory(Long categoryId) {
 		
-		/*Category category;
-		
-		if(Objects.isNull(categoryId)) {
-			category = new Category();
-		}
-		else {
-			category = findCategoryById(categoryId);
-		}
-		return category;*/
-		
+			
 		if(categoryId != null) {
 			return findCategoryById(categoryId);
 		}else {

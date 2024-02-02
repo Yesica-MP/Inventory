@@ -1,7 +1,7 @@
 /**
 # Inventory Management System
 
-This project is a REST API for managing inventory, specifically focusing on liquor inventory. It includes entities such as Brand, Supplier, Category, and SupplierCategory.
+This project is a REST API for managing inventory, specifically focusing on liquor inventory. It includes entities such as Brand, Supplier, Category.
 
 ## Table of Contents
 
@@ -14,7 +14,6 @@ This project is a REST API for managing inventory, specifically focusing on liqu
 - [Getting Started](#getting-started)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Entities
 
@@ -70,10 +69,6 @@ To get started with the project, follow these steps:
 1. Clone the repository.
 2. Set up your database and configure the application properties.
 3. Build and run the project.
-
-## Usage
-
-Provide information on how to use the API, including API endpoints, request and response formats, and any authentication mechanisms.
 
 */
 package inventory.management;
