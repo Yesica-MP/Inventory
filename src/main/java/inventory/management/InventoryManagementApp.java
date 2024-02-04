@@ -62,6 +62,20 @@ Represents the association between suppliers and categories in the inventory man
 - A Supplier has a one-to-many relationship with Brand and a many-to-many relationship with Category.
 - A Category has a one-to-many relationship with Brand and a many-to-many relationship with Supplier.
 
+### Error Handling
+
+In this project, we have implemented a comprehensive error handling mechanism to enhance the robustness of the application. Key aspects of our error handling approach include:
+
+- **Custom Exceptions:** We have defined custom exception classes to handle specific error scenarios, providing meaningful error messages to the clients.
+
+- **Global Exception Handling:** A global exception handler is in place to catch unexpected errors across the application. It logs relevant information and returns a standardized error response.
+
+- **HTTP Status Codes:** Our API adheres to standard HTTP status codes to convey the success or failure of each request. Detailed information about the status and error is provided in the response body.
+
+- **Logging:** We utilize logging extensively to capture error details, aiding in debugging and issue resolution. Logs are generated for both expected and unexpected errors.
+
+- **User-Friendly Error Messages:** For client-facing errors, we ensure that error messages are user-friendly and guide clients on corrective actions.
+
 ## Getting Started
 
 To get started with the project, follow these steps:

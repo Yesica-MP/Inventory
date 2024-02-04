@@ -98,10 +98,12 @@ public class InventoryManagementController {
 	}
 	
 	// Endpoint to associate a category with a supplier
-	@PostMapping("/category/supplier")
+	@PostMapping("/category/supplier/{supplierId}")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public CategoryResponse insertCategory(@RequestBody CategoryResponse categoryResponse) {
-		log.info("Associating suppliers with existing category {}",  categoryResponse.getCategoryId());
+	public CategoryResponse insertCategory(
+			@PathVariable Long supplierId,
+			@RequestBody CategoryResponse categoryResponse) {
+		log.info("Associating suppliers with existing category {}",  categoryResponse.getCategoryId(), supplierId);
 		return inventoryService.associateSuppliersWithCategory(categoryResponse);
 		
 	}
