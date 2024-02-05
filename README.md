@@ -72,6 +72,21 @@ In this project, I have implemented an error handling mechanism to enhance the a
 
 ## Getting Started
 
+It is imperative to follow the specified order of creation. Please note the following steps:
+
+**1. Supplier Creation:**
+
+Before proceeding with any other steps, it is essential to create a supplier. The application's foundation relies on the existence of suppliers.
+
+**2. Brand Creation:**
+
+Following the establishment of a supplier, the next step is to create a brand. A supplier must be in place before initiating the brand creation process.
+
+**3.Category Association:**
+
+To associate a category with a supplier, it is mandatory to have a brand created. This ensures a structured and accurate categorization process.
+
+
 To get started with the project, follow these steps:
 
 1. Clone the repository.
